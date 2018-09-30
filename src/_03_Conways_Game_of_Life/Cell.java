@@ -29,19 +29,11 @@ public class Cell implements Drawable {
 	 */
 
 	public void liveOrDie(int numNeighbors) {
-
-		if (numNeighbors < 2) {
-			isAlive = false;
-		}
-		if (numNeighbors == 2 || numNeighbors == 3) {
-			isAlive = true;
-		}
-		if (numNeighbors > 3) {
-			isAlive = false;
-		}
-		if (numNeighbors == 3 && isAlive == false) {
-			isAlive = true;
-		}
+		if(numNeighbors < 2) {isAlive = false;}
+		if(numNeighbors == 2 || numNeighbors == 3) {isAlive = true;}
+		if(numNeighbors > 3) {isAlive = false;}
+		if(isAlive == false && numNeighbors == 3) {isAlive = true;}
+		
 
 	}
 
@@ -52,22 +44,23 @@ public class Cell implements Drawable {
 	public int getY() {
 		return y;
 	}
+	
+	public void setAlive(boolean x)
+	{
+		isAlive = x;
+	}
 
 	// 12. Complete the draw method.
 	// It draws a colored square if cell is alive
 	// draws empty square if cell is dead
 	@Override
 	public void draw(Graphics g) {
-		if (isAlive = true) {
+		if(isAlive = true) {
+			g.setColor(Color.BLUE);
+			g.fillRect(x, y, cellSize, cellSize);}
+		if(isAlive = false) {
 			g.setColor(Color.RED);
 			g.fillRect(x, y, cellSize, cellSize);
-
 		}
-
-		if (isAlive = false) {
-			g.setColor(Color.BLACK);
-			g.drawRect(x, y, cellSize, cellSize);
-		}
-
 	}
 }
