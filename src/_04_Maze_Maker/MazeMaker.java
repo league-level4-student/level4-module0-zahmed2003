@@ -23,10 +23,9 @@ public class MazeMaker {
 		int r1 = new Random().nextInt(h);
 		int r2 = new Random().nextInt(w);
 
-		Cell c = maze.getCell(r1, r2);
 
 		// 5. call selectNextPath method with the randomly selected cell
-		selectNextPath(c);
+		selectNextPath(maze.getCell(r1, r2));
 
 		return maze;
 	}
@@ -36,28 +35,15 @@ public class MazeMaker {
 		// A. mark cell as visited
 		currentCell.setBeenVisited(true);
 
-		int y = currentCell.getX();
-		int x = currentCell.getX();
+		
 		// B. check for unvisited neighbors using the cell
-		for (int i = 0; i < maze.cells.length; i++) {
-			for (int j = 0; j < maze.cells[i].length; j++) {
-
-				if ((i + 1 == x && y == j) || (i - 1 == x && y == j) || (j + 1 == y && x == i)
-						|| (j - 1 == y && x == i)) {
-					if (maze.cells[i][j].hasBeenVisited() == false) {
-						uncheckedCells.push(maze.cells[i][j]);
-						removeWalls(currentCell, maze.cells[i][j]);
-						selectNextPath(maze.cells[i][j]);
-					}
-				}
-
-			}
-		}
+		ArrayList<Cell> a = getUnvisitedNeighbors(currentCell);
+		
 
 		// C. if has unvisited neighbors,
-
+		if(a.size() > 0) {
 		// C1. select one at random.
-
+			Cell c = a.get(new Random().nextInt(a.size());
 		// C2. push it to the stack
 
 		// C3. remove the wall between the two cells
@@ -65,11 +51,9 @@ public class MazeMaker {
 		// C4. make the new cell the current cell and mark it as visited
 
 		// C5. call the selectNextPath method with the current cell
-
-		// D. if all neighbors are visited
-		if (uncheckedCells.isEmpty() == false) {
-			selectNextPath(uncheckedCells.pop());
 		}
+		// D. if all neighbors are visited
+		
 		// D1. if the stack is not empty
 
 		// D1a. pop a cell from the stack
