@@ -1,4 +1,4 @@
-package _04_Maze_Maker;
+  package _04_Maze_Maker;
 
 import java.awt.Graphics;
 
@@ -35,7 +35,7 @@ public class Maze {
 
 	// 4b. This method returns the selected cell.
 	public Cell getCell(int x, int y) {
-		return cells[x][y];
+		return cells[y][x];
 	}
 
 	public int getWidth() {

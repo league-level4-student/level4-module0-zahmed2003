@@ -24,9 +24,11 @@ public class MazeDisplay extends JPanel{
 		window.add(this);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setVisible(true);
-		window.pack();
+		
 		
 		maze = MazeMaker.generateMaze(5, 5);
+		
+		window.pack();
 		repaint();
 	}
 	
